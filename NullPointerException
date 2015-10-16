@@ -1,0 +1,7 @@
+M:\pc\Dokumenter\ukesjub>java Oppgave6
+Exception in thread "main" java.lang.NullPointerException
+        at Ordliste.leggeTilOrd(Ordliste.java:23)
+        at Ordliste.lesBok(Ordliste.java:16)
+        at Oppgave6.main(Oppgave6.java:7)
+
+but whyyyyy!
