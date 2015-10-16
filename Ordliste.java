@@ -6,12 +6,10 @@ import java.util.ArrayList;
 public class Ordliste
 {
   private ArrayList<Ord> liste = new ArrayList<Ord>();//arraylist for oppsamling av ord
-  private int listelengde = 0;
 
   public void lesBok(String filen)throws Exception
   {
     liste.add(new Ord("null"));//se siste linje i finnOrd-metod
-    listelengde++;
     Scanner inn = new Scanner(new File(filen));//henter ord fra filen anngitt i kallet paa metode lesBok og legger det inn i scanner inn
     while (inn.hasNextLine())
       {
@@ -30,7 +28,6 @@ public class Ordliste
       {
         Ord ord = new Ord(ordet);//lager nytt ord objekt
         liste.add(ord);//legger til objektet i liste
-        listelengde++;
       }
   }
 
@@ -49,7 +46,7 @@ public class Ordliste
   public int antallOrd()
   {
     int listeTelling;
-    if (liste.get(0).hentAntall()==1)
+    if (liste.get(0).hentAntall()==1)//trekke fra en pga lagt til null foerst i liste
     {
       listeTelling = liste.size() - 1;
     }
