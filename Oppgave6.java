@@ -5,13 +5,8 @@ public class Oppgave6
   {
     Ordliste liste = new Ordliste();
     liste.lesBok("scarlet.text");
-    System.out.println(liste.antallOrd());
-
-
-
-
-
+    System.out.println("Det er totalt " + liste.antallOrd() + " ulike ord i teksten.");
+    System.out.println("Watson er skrevet " + liste.antallForekomster("watson") + " ganger i teksten.");
 
   }
-
 }
