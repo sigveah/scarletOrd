@@ -7,6 +7,7 @@ public class Ordliste
 {
   private ArrayList<Ord> liste = new ArrayList<Ord>();//arraylist for oppsamling av ord
 
+
   public void lesBok(String filen)throws Exception
   {
     liste.add(new Ord("null"));//se siste linje i finnOrd-metod
@@ -17,6 +18,7 @@ public class Ordliste
         leggeTilOrd(tempOrd);//sender ord fra scanner via string til metode legeTilOrd
       }
   }
+
 
   public void leggeTilOrd(String ordet)
   {
@@ -31,17 +33,19 @@ public class Ordliste
       }
   }
 
+
   public Ord finnOrd(String tekst)
   {
-    for (int i =0; i>=liste.size();  i++)//gaar gjennom alle ord i liste
+    for (Ord objektKopi: liste)//gaar gjennnom liste og sender inn en kopi av hvert objekt
     {
-     if(tekst.equalsIgnoreCase(liste.get(i).toString()))//sjekker om tekst er likt som hver toString fra liste
-     {
-       return liste.get(i);//returnerer listepossisjon
-     }
+      if (objektKopi.toString().equalsIgnoreCase(tekst))//sjekker om tekst er likt som tostring i kopiert objekt
+      {
+        return objektKopi;//returnerer objektKopi hvis det matcher sin toString mot tekst
+      }
     }
     return liste.get(0);//hvis forloekke ikke har returner noen verdi faar man reutrnert null(som er min ekstraoppføring i listen, se linje 12)
   }
+
 
   public int antallOrd()
   {
@@ -55,9 +59,31 @@ public class Ordliste
       listeTelling = liste.size();
     }
     return listeTelling;
-
   }
 
+
+  public int antallForekomster(String tekst)
+  {
+    int forekomster = finnOrd(tekst).hentAntall();
+    return forekomster;
+  }
+
+  public Ord vanligste()
+  {
+    int size=0;
+    int i=0;
+    int arrayplass = 0;
+    for (Ord o: liste)
+    {
+      i++;
+      if (antallForekomster(o.toString())>size)
+      {
+        size = o.hentAntall();
+        arrayplass = i;
+      }
+    }
+    return liste.get(arrayplass);
+  }
 
 
 }
